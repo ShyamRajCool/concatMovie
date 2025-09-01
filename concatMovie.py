@@ -28,9 +28,18 @@ def linkGet():
         successLabel.config(text="Please end the file with .mp4")
     else:
         successCounter+=1
-    justEnteredLabel.config(text=fileName.get())
-    successLabel.config(text="Success. Times task was completed:"+str(successCounter))
-    Label.grid(row=1,column=0)
+        savedFileDict.update({f'{str(successCounter)}':str(fileName.get())})
+        clipAddTextBox.delete(0,END)
+        justEnteredLabel.config(text=fileName.get())
+        successLabel.config(text="Success. Times task was completed:"+str(successCounter))
+
+
+
+confirmClipAddButton=Button(clipAddWindow,command=linkGet,text="Click to confirm the clip",fg="black",font=("Times",11))
+confirmClipAddButton.grid(row=1,column=1)
+
+successLabel=Label(clipAddWindow,fg="black",font=('Times',11))
+successLabel.grid(row=1,column=0)
 
 justEnteredLabel=Label(clipAddWindow,fg="orange",font=('Times',11))
 justEnteredLabel.grid(row=3,column=1)
@@ -57,5 +66,32 @@ for clip in savedFileDict:
     videoFileClipsDict.update({f'clip{clipnumber}':VideoFileClip(savedFileDict[clip],fps_source='tbr')})
     clipnumber+=1
 
+for thing in videoFileClipsDict:
+    print(videoFileClipsDict[thing].duration)
 
 fontPath = r"C:\Windows\Fonts\arialbd.ttf"
+
+#->Creation of Windows to Either Answer Prompts or Enter File Destinations for Clips
+clipSegmentWindow=Tk()
+clipSegmentWindow.title("Clip Segment Window")
+clipSegmentWindow.geometry("500x300")
+
+
+
+for clip in videoFileClipsDict:
+
+    timeList=[time for time in range(0,int(videoFileClipsDict[thing].duration))]
+    fileNameUpdate=Label(clipSegmentWindow,text=f'Dropdown for {clip} ',fg="black",font=("Times",11))
+    fileNameUpdate.grid(row=0,column=0)
+
+    timeDropdown=ttk.Combobox(clipSegmentWindow,values=timeList)
+    timeDropdown.grid(row=0,column=1)
+
+def closeWindow2():
+    clipSegmentWindow.withdraw()
+    clipSegmentWindow.quit()
+
+linkAddClose2=Button(clipSegmentWindow,command=closeWindow2,text="Close the window",fg="black",font=('Times',11))
+linkAddClose2.grid(row=2,column=1)
+clipSegmentWindow.mainloop()
+    
