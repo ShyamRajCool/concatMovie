@@ -1,5 +1,5 @@
 With any amount of video files, this GUI based short-form video concatentation tool is useful to combine clips of predetermined lengths. 
-This tool is useful if you want a voiceover and transcribed text on your short-form video. 
+This tool is useful if you want an AI voiceover and transcribed text on your short-form video. 
 
 *Upcoming changes*
 Trimming from seconds to minutes will added soon. 
