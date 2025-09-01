@@ -36,7 +36,6 @@ def linkGet():
         successLabel.config(text="Success. Times task was completed:"+str(successCounter))
 
 #Widgets of the GUI
-
 confirmClipAddButton=Button(clipAddWindow,command=linkGet,text="Click to confirm the clip",fg="black",font=("Times",11))
 confirmClipAddButton.grid(row=1,column=1)
 
@@ -46,7 +45,7 @@ successLabel.grid(row=1,column=0)
 justEnteredLabel=Label(clipAddWindow,fg="orange",font=('Times',11))
 justEnteredLabel.grid(row=3,column=1)
 
-#This comments serves as a means for separation
+#This comment serves as a means for separation
 def closeWindow():
     clipAddWindow.withdraw()
     clipAddWindow.quit()
@@ -54,8 +53,6 @@ def closeWindow():
 linkAddClose=Button(clipAddWindow,command=closeWindow,text="Close the window",fg="black",font=('Times',11))
 linkAddClose.grid(row=2,column=1)
 clipAddWindow.mainloop()
-
-
 
 #################################################################Second Section of Input Commences
 
@@ -89,6 +86,7 @@ for clip in videoFileClipsDict:
         clipSegmentWindow.withdraw()
         clipSegmentWindow.quit()
 
+    
     #->Widget
     startTimeDropdown=ttk.Combobox(clipSegmentWindow,values=timeList,)
     startTimeDropdown.grid(row=0,column=1)
@@ -96,12 +94,12 @@ for clip in videoFileClipsDict:
     #->Widget
     confirmStTimeButton=Button(clipSegmentWindow,command=storeStartTime, text="Click to save start time", fg="black", font=("Times",11))
     confirmStTimeButton.grid(row=1,column=1)
-
-
+    
     def closeWindow2():
         clipSegmentWindow.withdraw()
         clipSegmentWindow.quit()
 
+    
     linkAddClose2=Button(clipSegmentWindow,command=closeWindow2,text="Close the window",fg="black",font=('Times',11))
     linkAddClose2.grid(row=2,column=1)
 
@@ -154,9 +152,7 @@ for clip in videoFileClipsDict:
             smallestDimensionY=heightClip
         else:
             videoFileClipsDict[clip]=videoFileClipsDict[clip].resized((smallestDimensionW,smallestDimensionY))
-    
-    print(f'{smallestDimensionW/2}, {smallestDimensionY}, {smallestDimensionW/2}, {smallestDimensionY/2}')
-
+            
     videoFileClipsDict[clip]=videoFileClipsDict[clip].cropped(width=smallestDimensionW/2, height=smallestDimensionY, x_center=smallestDimensionW/2, y_center=smallestDimensionY/2)
 
 
