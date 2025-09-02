@@ -8,4 +8,4 @@ Restricting file inputs that aren't on on the user's device will be added soon a
 
 *Creator's Comment*
 Please treat this tool kindly.
-Thank's for reading.
+Thanks for reading.
